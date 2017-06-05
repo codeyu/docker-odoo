@@ -1,0 +1,17 @@
+version: '2'
+services:
+  web:
+    image: odoo:10.0
+    depends_on:
+      - odoodb
+    ports:
+      - "8069:8069"
+    environment:
+    - HOST=odoodb
+    - USER=odoo
+    - PASSWORD=myodoo
+  odoodb:
+    image: postgres:9.4
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=myodoo
